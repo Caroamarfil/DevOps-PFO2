@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./mi-app
+    ports:
+      - "8081:80"
+    volumes:
+      - ./mi-app:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - tpdevops-net
+
+  db:
+    image: mysql:8.0
+    container_name: basededatos
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: clave123
+      MYSQL_DATABASE: practica
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - tpdevops-net
+
+volumes:
+  mysql-data:
+
+networks:
+  tpdevops-net:
+    driver: bridge

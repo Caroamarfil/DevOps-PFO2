@@ -1,0 +1,14 @@
+FROM php:8.2-apache
+
+# Instalamos extensiones para MySQL
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Copiamos el código al contenedor
+COPY . /var/www/html/
+
+# Habilitamos mod_rewrite (opcional, si lo necesitas)
+RUN a2enmod rewrite
+
+# Ajustamos permisos para evitar problemas (opcional)
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
