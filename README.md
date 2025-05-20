@@ -41,3 +41,4 @@ http://localhost:8081
 
 ## Docker Hub
 La imagen de la aplicación fue publicada en Docker Hub y puede ejecutarse directamente con: docker run --name mi-app-test -p 8081:80 caroamarfil/mi-app:1.0
+Link a la imagen: https://hub.docker.com/repository/docker/caroamarfil/mi-app/general
